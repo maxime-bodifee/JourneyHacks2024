@@ -1,9 +1,10 @@
 import React from 'react';
 
-function Post() {
+function Post({ post }) {
     return (
         <div className="post">
-            {/* Post content goes here */}
+            <h3>{post.title}</h3>
+            <p>{post.body}</p>
         </div>
     );
 }

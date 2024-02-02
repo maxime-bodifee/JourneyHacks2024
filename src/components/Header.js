@@ -3,7 +3,7 @@ import React from 'react';
 function Header() {
     return (
         <header>
-            <h1>My Social Media App</h1>
+            <h1>Jurni</h1>
         </header>
     );
 }

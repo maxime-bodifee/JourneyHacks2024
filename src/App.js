@@ -1,6 +1,6 @@
 import React from 'react';
 import Header from './components/Header';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './pages/Home';
 import UserProfile from './pages/UserProfile';
 
@@ -9,10 +9,10 @@ function App() {
         <Router>
             <div>
                 <Header />
-                <Switch>
-                    <Route path="/" exact component={Home} />
-                    <Route path="/user/:id" component={UserProfile} />
-                </Switch>
+                <Routes>
+                    <Route path="/" element={<Home />} />
+                    <Route path="/user/:id" element={<UserProfile />} />
+                </Routes>
             </div>
         </Router>
     );

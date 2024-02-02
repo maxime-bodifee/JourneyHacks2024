@@ -1,9 +1,9 @@
 import React from 'react';
 
-function Comment() {
+function Comment({ comment }) {
     return (
         <div className="comment">
-            {/* Comment content goes here */}
+            <p>{comment.body}</p>
         </div>
     );
 }
