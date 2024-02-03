@@ -1,14 +1,14 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Fabric, Stack } from '@fluentui/react';
+import { Stack } from '@fluentui/react';
 import CreatePostForm from '../components/CreatePostForm';
 import { addPost } from '../dataService';
 
 const stackTokens = { childrenGap: 10 };
 
 const containerClass = {
-    width: '80%',
-    margin: '20px auto',
+    width: '60%',
+    margin: '150px auto',
     padding: 20,
     boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
     backgroundColor: 'lightgray',
@@ -35,12 +35,10 @@ function CreatePostPage() {
     };
 
     return (
-        <Fabric>
-            <Stack className={containerClass} tokens={stackTokens}>
-                <h2>Create a New Step</h2>
-                <CreatePostForm onSubmit={handleSubmit} onCancel={handleCancel} />
-            </Stack>
-        </Fabric>
+        <Stack className={containerClass} tokens={stackTokens}>
+            <h2>Create a New Step</h2>
+            <CreatePostForm onSubmit={handleSubmit} onCancel={handleCancel} />
+        </Stack>
     );
 }
 
