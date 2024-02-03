@@ -4,12 +4,12 @@ import Header from './components/Header';
 import Home from './pages/Home';
 import UserProfile from './pages/UserProfile';
 import CreatePostPage from './pages/CreatePostPage';
+import "./style.css";
 
 function App() {
     return (
         <Router>
             <div>
-                <Header />
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/user/:id" element={<UserProfile />} />

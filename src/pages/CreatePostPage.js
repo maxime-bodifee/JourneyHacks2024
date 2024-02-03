@@ -11,7 +11,7 @@ const containerClass = {
     margin: '20px auto',
     padding: 20,
     boxShadow: '0 2px 4px rgba(0, 0, 0, 0.1)',
-    backgroundColor: 'white',
+    backgroundColor: 'lightgray',
 };
 
 function CreatePostPage() {
@@ -37,7 +37,7 @@ function CreatePostPage() {
     return (
         <Fabric>
             <Stack className={containerClass} tokens={stackTokens}>
-                <h2>Create a New Post</h2>
+                <h2>Create a New Step</h2>
                 <CreatePostForm onSubmit={handleSubmit} onCancel={handleCancel} />
             </Stack>
         </Fabric>
