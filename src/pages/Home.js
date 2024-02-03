@@ -1,22 +1,24 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
+import React from 'react';
 import Post from '../components/Post';
+import { getPosts } from '../dataService';
+import { Fabric, Stack } from '@fluentui/react';
+import { DefaultButton } from '@fluentui/react/lib/Button';
+import { Link as RouterLink } from 'react-router-dom';
 
 function Home() {
-    const [posts, setPosts] = useState([]);
+  const posts = getPosts().reverse();
 
-    useEffect(() => {
-        axios.get('https://jsonplaceholder.typicode.com/posts')
-            .then(response => setPosts(response.data))
-            .catch(error => console.error('Error fetching posts:', error));
-    }, []);
-
-    return (
-        <div>
-            <h2>Home Page</h2>
-            {posts.map(post => <Post key={post.id} post={post} />)}
-        </div>
-    );
+  return (
+    <Fabric>
+      <Stack tokens={{ childrenGap: 20, padding: 20 }}>
+        <h2 className="home-header">Home Page</h2>
+        <RouterLink to="/create">
+          <DefaultButton text="Create a Post" />
+        </RouterLink>
+        {posts.map(post => <Post key={post.id} post={post} />)}
+      </Stack>
+    </Fabric>
+  );
 }
 
 export default Home;

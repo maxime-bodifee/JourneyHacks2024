@@ -9,6 +9,7 @@
     "eject": "react-scripts eject"
   },
   "dependencies": {
+    "@fluentui/react": "^8.115.3",
     "axios": "^1.6.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

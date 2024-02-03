@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
 import Post from '../components/Post';
 import Comment from '../components/Comment';
+import { fetchPosts } from '../api';
 
 function UserProfile({ match }) {
     const [user, setUser] = useState({});
@@ -11,22 +11,40 @@ function UserProfile({ match }) {
     useEffect(() => {
         const userId = match.params.id;
 
-        axios.get(`https://jsonplaceholder.typicode.com/users/${userId}`)
-            .then(response => setUser(response.data))
-            .catch(error => console.error('Error fetching user:', error));
+        // Fetch user details from the mock API
+        // ... (unchanged code)
 
-        axios.get(`https://jsonplaceholder.typicode.com/posts?userId=${userId}`)
-            .then(response => setPosts(response.data))
-            .catch(error => console.error('Error fetching user posts:', error));
+        // Fetch posts from the mock API
+        const fetchUserPosts = async () => {
+            try {
+                const userPosts = await fetchPosts();
+                setPosts(userPosts);
+            } catch (error) {
+                console.error('Error fetching user posts:', error);
+            }
+        };
 
-        axios.get(`https://jsonplaceholder.typicode.com/comments?postId=${userId}`)
-            .then(response => setComments(response.data))
-            .catch(error => console.error('Error fetching user comments:', error));
+        fetchUserPosts();
+
     }, [match.params.id]);
+
+    const handleSubmit = async (newPost) => {
+        try {
+            // Create a new post on the server
+            const createdPost = await createPost(newPost);
+
+            // Fetch the updated list of posts after creating a new post
+            const updatedPosts = await fetchPosts();
+            setPosts(updatedPosts);
+        } catch (error) {
+            console.error('Error creating or fetching user posts:', error);
+        }
+    };
 
     return (
         <div>
             <h2>{user.name}'s Profile</h2>
+            <CreatePost onPostSubmit={handleSubmit} />
             <div>
                 <h3>Posts</h3>
                 {posts.map(post => <Post key={post.id} post={post} />)}
